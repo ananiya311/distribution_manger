@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/signup.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container my-5 border p-4">
+
+        <div class="header mb-3">
+            <img src="https://www.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="">
+        </div>
+
+        <form action="/signup-form" method="post">
+           <div class="col border-top p-3">
+                <!-- Emial input container -->
+                <div class="form-group">
+                    <label for="">Email address</label>
+                    <input type="email" class="form-control inputEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                </div>
+
+                <!-- first name and last name containers -->
+                <div class="row">
+                    <div class="child mx-3">
+                        <div class="form-group">
+                            <label for="exampleInputFirsName1">Firs Name</label>
+                            <input type="text" class="form-control inputFirsName" id="exampleInputFirstName1" placeholder="Firs Name" name="Fname">
+                        </div>
+                    </div>
+                    <div class="child">
+                        <div class="form-group">
+                            <label for="exampleInputLastName1 inputLastName">Last Name</label>
+                            <input type="text" class="form-control lastNameInput" id="exampleInputLastName1" placeholder="Last Name" name="Lname">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- sex and DOB container -->
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Gander</label>
+                        <select id="inputState" class="form-control ganderInput" name="sex">
+                          <option selected>Male</option>
+                          <option>Femal</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="form-group col-mx-3">
+                            <label for="">Date of Barth</label>
+                            <input type="date" class="form-control DOB" name="DOB">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User name password and image uploder -->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control usernameInput" id="exampleInputUsername1" aria-describedby="emailHelp" placeholder="Enter username" name="Uname">
+                </div>
+               
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control PasswordInput" id="exampleInputPassword1" placeholder="Password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Confirm Password</label>
+                    <input type="password" class="form-control confirmPassword" id="exampleInputPassword2" placeholder="Confirm Password">
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Uplode profile pic</label>
+                    <input type="file" class="form-control-file imageUplode" id="exampleFormControlFile1" name="pic">
+                    <small id="emailHelp" class="form-text text-muted">This fild is not required. you can set it up later in edit profile</small>
+
+                </div>
+                <button type="submit" class="btn btn-primary mb-3" onclick="signup()">Submit</button>
+                <button type="reset" class="btn btn-danger mb-3">Cancel</button>
+                
+            </div>
+        </form> 
+    </div>
+</body>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+></script>
+<script src="/js/signup.js"></script>
+
+</html>
