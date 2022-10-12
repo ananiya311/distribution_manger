@@ -10,7 +10,9 @@ const imgpath = document.querySelector('.imageUplode')
 
 
 
-window.location = `/login?test=${"teadsf"}`
+const signUp = async()=>{
+    
+}
 
 
 

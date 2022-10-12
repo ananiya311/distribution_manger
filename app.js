@@ -27,7 +27,7 @@ app.use(experss.urlencoded({extended:true}))
 //seting the view engine
 app.set('views', './src/views')
 app.set('view engine', 'ejs')
-console.log(process.env.API_SECRET);
+
 
 //set static file 
 app.use(experss.static('public'))
