@@ -10,22 +10,49 @@
     
 </head>
 <body>
+   <% if(iserror){ %>
+    <%- msg %>
+    <%}%>
     <div class="container my-5 border p-4">
-        <div class="header mb-3">
-            <h3>Login to your account</h3>
-        </div>
-        <form action="/login" method="get">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Username</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
-              
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>  <a href="/signup-page" class="ml-3">Sign up?</a>
+      <% if(from == 'signup-form'){ %>
+          <div class="header mb-3">
+              <h3>Login to your account</h3>
+          </div>
+          <form action="/login-form" method="post">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Username/Email</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username/Email" name="emailUsername" required value=<%- data.email %>>
+                
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required value=<%- data.passWorde %>>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>  
+              <button type="reset" class="btn btn-danger">Reset</button>
+              <a href="/signup-page" class="ml-3">Sign up?</a>
           </form>
+      <%}else{%>
+          <div class="header mb-3">
+              <h3>Login to your account</h3>
+          </div>
+          <form action="/login-form" method="post">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Username/Email</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username/Email" name="emailUsername" required>
+                
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>  
+              <button type="reset" class="btn btn-danger">Reset</button>
+              <a href="/signup-page" class="ml-3">Sign up?</a>
+          </form>
+      <%}%>
+          
+      
     </div>
 </body>
 </html>

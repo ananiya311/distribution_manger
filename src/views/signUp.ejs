@@ -9,82 +9,81 @@
     <title>Document</title>
 </head>
 <body>
-    
+   
     <div class="container my-5 border p-4">
-
-        <div class="header mb-3">
-            <img src="https://www.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="">
-        </div>
-
-        <form>
-           <div class="col border-top p-3">
-                <!-- Emial input container -->
-                <div class="form-group">
-                    <label for="">Email address</label>
-                    <input type="email" class="form-control inputEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-                </div>
-
-                <!-- first name and last name containers -->
-                <div class="row">
-                    <div class="child mx-3">
-                        <div class="form-group">
-                            <label for="exampleInputFirsName1">Firs Name</label>
-                            <input type="text" class="form-control inputFirsName" id="exampleInputFirstName1" placeholder="Firs Name" name="Fname">
-                        </div>
-                    </div>
-                    <div class="child">
-                        <div class="form-group">
-                            <label for="exampleInputLastName1 inputLastName">Last Name</label>
-                            <input type="text" class="form-control lastNameInput" id="exampleInputLastName1" placeholder="Last Name" name="Lname">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- sex and DOB container -->
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        <label for="inputState">Gander</label>
-                        <select id="inputState" class="form-control ganderInput" name="sex">
-                          <option selected>Male</option>
-                          <option>Femal</option>
-                        </select>
-                    </div>
-                    <div>
-                        <div class="form-group col-mx-3">
-                            <label for="">Date of Barth</label>
-                            <input type="date" class="form-control DOB" name="DOB">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User name password and image uploder -->
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" class="form-control usernameInput" id="exampleInputUsername1" aria-describedby="emailHelp" placeholder="Enter username" name="Uname">
-                </div>
-               
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control PasswordInput" id="exampleInputPassword1" placeholder="Password" name="password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword2">Confirm Password</label>
-                    <input type="password" class="form-control confirmPassword" id="exampleInputPassword2" placeholder="Confirm Password">
-                </div>
-                
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Uplode profile pic</label>
-                    <input type="file" class="form-control-file imageUplode" id="exampleFormControlFile1" name="pic">
-                    <small id="emailHelp" class="form-text text-muted">This fild is not required. you can set it up later in edit profile</small>
-
-                </div>
-                <button type="submit" class="btn btn-primary mb-3" onclick="signup()">Submit</button>
-                <button type="reset" class="btn btn-danger mb-3">Cancel</button>
-                
+            <div class="header mb-3">
+                <img src="https://www.bing.com/th?id=OIP.f3DM2upCo-p_NPRwBAwbKQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="">
             </div>
-        </form> 
+            <% if(iserror) { %>
+                <%- msg %>
+            <% } %>
+            <form action="/signup-form" method="post">
+            <div class="col border-top p-3">
+                    <!-- Emial input container -->
+                    <div class="form-group">
+                        <label for="">Email address</label>
+                        <input type="email" class="form-control inputEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+                    </div>
+
+                    <!-- first name and last name containers -->
+                    <div class="row">
+                        <div class="child mx-3">
+                            <div class="form-group">
+                                <label for="exampleInputFirsName1">Firs Name</label>
+                                <input type="text" class="form-control inputFirsName" id="exampleInputFirstName1" placeholder="Firs Name" name="Fname" required>
+                            </div>
+                        </div>
+                        <div class="child">
+                            <div class="form-group">
+                                <label for="exampleInputLastName1 inputLastName">Last Name</label>
+                                <input type="text" class="form-control lastNameInput" id="exampleInputLastName1" placeholder="Last Name" name="Lname" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- sex and DOB container -->
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Gander</label>
+                            <select id="inputState" class="form-control ganderInput" name="sex" required>
+                            <option selected>Male</option>
+                            <option>Femal</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="form-group col-mx-3">
+                                <label for="">Date of Barth</label>
+                                <input type="date" class="form-control DOB" name="DOB" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User name password and image uploder -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control usernameInput" id="exampleInputUsername1" aria-describedby="emailHelp" placeholder="Enter username" name="Uname" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control PasswordInput" id="exampleInputPassword1" placeholder="Password" name="password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Confirm Password</label>
+                        <input type="password" class="form-control confirmPassword" id="exampleInputPassword2" placeholder="Confirm Password" name="passcon" required>
+                        
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    <button type="reset" class="btn btn-danger mb-3">Cancel</button>
+                    <a href="/login" class="ml-5">Go back to login form?</a>
+                    
+                </div>
+            </form> 
+            
     </div>
+    
 </body>
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
