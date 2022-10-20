@@ -10,15 +10,28 @@ const { rawListeners } = require('../module/usersModule')
 
 //router for the home page
 route.get('/', async(req, res)=>{
-
    if(req.session.userId === null){
     return res.redirect('/login')
    }
-
-    res.render('homePage')
-    
+    res.render('homePage')  
 })
 
+//a controller and a rout for the new itemes page
+route.get('/new-itemes-page', (req, res)=>{
+    res.render('additem')
+})
+route.post('/new-itmes-page/form', async(req, res)=>{
+    const {productName, productType, price, weight, productionDate,experationDate,invantory}
+    =req.body
+    try {
+        await productModule.create({
+            
+        })
+    } catch (error) {
+        
+    }
+    
+})
 
 route.get('/login',async(req,res)=>{
     res.render('login', {from:'self', iserror:false})
@@ -55,41 +68,88 @@ route.post('/login-form', async(req, res)=>{
 
 })
 
-// signup router constrolers
-route.get('/signup-page', (req, res)=>{
-    res.render('signUp', {from:'page', iserror:false})
-})
-route.post('/signup-form', async(req, res)=>{
-    try {
-        const {
-                email, Fname, Lname, sex,
-                DOB,Uname,password,passcon
-            } = req.body
 
-        const valedate = await userModule.find({email:email})
-        if (valedate.length <= 0) {
-            if(passcon === password){
-                const newuser = await userModule.create({
-                    email:email,
-                    firstName:Fname,
-                    lastName:Lname,
-                    sex:sex,
-                    DOB:DOB,
-                    userName:Uname,
-                    passWorde:password
-                })
-                res.render('login', {data:newuser, iserror: false, msg:'you have signed up uccessfully you can now login',from:"signup-form"})
-            }else{
-                res.render('signup', {iserror: true, msg:'the password you enterd does not match the confirmation password.',from:"signup-form"})
-            }
-        } else {
-            res.render('signup', {msg:"email is already taken.", iserror:true, from:"signup-fomr"})
-        }
-    } catch (error) {
-        console.log(error);
-       res.render('signup',{msg:'something went wrong please try again later.', iserror:true})
-    }
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // signup router constrolers
+// route.get('/signup-page', (req, res)=>{
+//     res.render('signUp', {from:'page', iserror:false})
+// })
+// route.post('/signup-form', async(req, res)=>{
+//     try {
+//         const {
+//                 email, Fname, Lname, sex,
+//                 DOB,Uname,password,passcon
+//             } = req.body
+
+//         const valedate = await userModule.find({email:email})
+//         if (valedate.length <= 0) {
+//             if(passcon === password){
+//                 const newuser = await userModule.create({
+//                     email:email,
+//                     firstName:Fname,
+//                     lastName:Lname,
+//                     sex:sex,
+//                     DOB:DOB,
+//                     userName:Uname,
+//                     passWorde:password
+//                 })
+//                 res.render('login', {data:newuser, iserror: false, msg:'you have signed up uccessfully you can now login',from:"signup-form"})
+//             }else{
+//                 res.render('signup', {iserror: true, msg:'the password you enterd does not match the confirmation password.',from:"signup-form"})
+//             }
+//         } else {
+//             res.render('signup', {msg:"email is already taken.", iserror:true, from:"signup-fomr"})
+//         }
+//     } catch (error) {
+//         console.log(error);
+//        res.render('signup',{msg:'something went wrong please try again later.', iserror:true})
+//     }
+// })
 
 
 

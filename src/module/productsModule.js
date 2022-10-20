@@ -1,42 +1,41 @@
 const mongoose = require ('mongoose')
 
 const products = mongoose.Schema({
+    prodcutID:{
+        type: String,
+        required:[true, "systems not genterating an ID refresh the page and try agin if thate doesnt work contacta as for more support"]
+    },
     productName:{
         type:String,
         required: [true, "product name is required"],
         trime:true
     },
-    productDescription:{
-        type:String,
-        required: [true, "product discription is required"],
-        trime:true
-    },
-    productImgae:{
-        type:String,
-        trime:true
-    },
-    productPriceInDozen:{
+    productPrice:{
         type:Number,
         required:[true, "the price of the product in dozens is required"],
         trime:true
     },
-    producersName:{
+    productionDate:{
+        type:Date,
+        required:[true, "production date is required"]
+    },
+    expirationDate:{
+        type:Date,
+        required:[true, "the expertion date is required"]
+    },
+    productType:{
         type:String,
-        required:[true, "the producers name is required"],
+        required:[true, "the production type is required"],
+        trime:true
+    },
+    weight:{
+        type:Number,
+        required:[true, "the weight of the product is required"],
         trime:true
     },
     invantory:{
         type:Number,
         required:true
-    },
-    numberOfRateings:{
-        type:Number,
-        userId:{
-            type:String
-        }
-    },
-    productRating:{
-        type:Number
     }
 })
 
