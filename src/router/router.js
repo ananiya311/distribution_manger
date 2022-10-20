@@ -1,12 +1,9 @@
-const { Router } = require('express')
 const experss = require('express')
 const session = require('express-session')
 const route = experss.Router()
 const con = require('../db/imguplod')
 const userModule = require('../module/usersModule')
 const productModule = require('../module/productsModule')
-const { raw } = require('body-parser')
-const { rawListeners } = require('../module/usersModule')
 
 //router for the home page
 route.get('/', async(req, res)=>{
@@ -18,17 +15,24 @@ route.get('/', async(req, res)=>{
 
 //a controller and a rout for the new itemes page
 route.get('/new-itemes-page', (req, res)=>{
-    res.render('additem')
+    res.render('additem', {error: false})
 })
 route.post('/new-itmes-page/form', async(req, res)=>{
-    const {productName, productType, price, weight, productionDate,experationDate,invantory}
+    const {productName, productType, price, weight, productionDate,expirationDate,invantory}
     =req.body
     try {
         await productModule.create({
-            
+            productName:productName,
+            productType:productType,
+            productPrice:price,
+            weight:weight,
+            productionDate:productionDate,
+            expirationDate:expirationDate,
+            invantory:invantory
         })
+        res.redirect('/new-itemes-page')
     } catch (error) {
-        
+        res.render('additem', {error:true, msg:error.errors.productPrice.properties.message})
     }
     
 })

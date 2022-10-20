@@ -1,14 +1,10 @@
 const mongoose = require ('mongoose')
 
 const products = mongoose.Schema({
-    prodcutID:{
-        type: String,
-        required:[true, "systems not genterating an ID refresh the page and try agin if thate doesnt work contacta as for more support"]
-    },
     productName:{
         type:String,
         required: [true, "product name is required"],
-        trime:true
+        trime:true,
     },
     productPrice:{
         type:Number,
