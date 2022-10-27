@@ -12,7 +12,7 @@
 <body>
    
    <% if(iserror){ %>
-    <%- msg %>
+    <%- "msg" %>
     <%}%>
     <div class="container my-5 border p-4">
       <% if(from == 'signup-form'){ %>
@@ -51,6 +51,7 @@
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>  
               <button type="reset" class="btn btn-danger">Reset</button>
+              <a href="/signup-page" class="ml-3">Sign up?</a>
           </form>
       <%}%>
           

@@ -51,19 +51,19 @@ route.post('/login-form', async(req, res)=>{
             if(findemil.length > 0 ){
                 if(findemil[0].passWorde === password){
                     req.session.userId = findemil[0]._id
-                    res.redirect('/')
+                    res.render('homePage', {iserror: false, fomr:"self"})
                 }else{
                     
-                    res.redirect('/login')
+                    res.render('login', {iserror:true, fomr:"self"})
                 }
             }
             if(finduname.length > 0){
                 if(finduname[0].passWorde === password){
                     req.session.userId = finduname[0]._id
-                    res.redirect('/')
+                    res.render('homePage', {iserror:false, fomr:"self"})
                 }else{
                     
-                    res.redirect('/login')
+                    res.render('login', {iserror:true, fomr:"self"})
                 }
             }
         } catch (error) {
@@ -72,6 +72,57 @@ route.post('/login-form', async(req, res)=>{
 
 })
 
+route.get('/signup-page',(req, res)=>{
+    res.render('signup-page', {iserr:false})
+})
+route.post('/signup',async (req, res)=>{
+    const {Firstname,Lastname,email,username,DOB,sex,password,conPassword} = req.body;
+
+
+    try {
+        const ISusername = await userModule.find({userName: username})
+        const ISemail = await userModule.find({email: email})
+    
+        if(ISusername.length > 0){
+            console.log(ISusername, "test")
+            res.render('signup-page', {iserr:true, msg:"username is already taken"})
+            return
+        }
+    
+        if(ISemail.length > 0){
+            console.log(ISemail, "test2");
+            res.render('signup-page', {iserr:true, msg:"email already taken"})
+            return
+        }
+
+        if(password != conPassword){
+            console.log('password');
+            res.render('signup-page', {iserr:true, msg:"password not confirmed. Make suer. The password you enterd matches the confirmation password"})
+            return
+        }
+
+        try {
+            await userModule.create({
+                email:email,
+                firstName:Firstname,
+                lastName:Lastname,
+                sex:sex,
+                DOB:DOB,
+                userName:username,
+                passWorde:password
+            })
+            res.render('login', {iserror:false, data:{email:email, passWorde:password}, from:"signup-form"})
+        } catch (error) {
+            res.render('signup-page', {iserr:true, msg:"try agen"})
+        }
+        
+    } catch (error) {
+        res.render('signup-page',{iserr:true, msg:"some ting went wrong. Please try again"})
+    }
+
+
+    
+})
 
 
 
